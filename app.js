@@ -30,11 +30,11 @@ app.use(session({
     secret: process.env.SESSIONSECRET,
     resave: false,
     saveUninitialized: false,
-    // cookie: { 
-    //     secure: process.env.NODE_ENV === "production", // False in localhost, true in production
-    //     httpOnly: true, // Prevents XSS attacks
-    //     sameSite: "none" // Allows cookies in cross-origin requests
-    // }
+    cookie: { 
+        secure: process.env.NODE_ENV === "production",  // Secure only in production
+        httpOnly: true, 
+        sameSite: "lax"  // Allows cross-origin cookies from localhost
+    }
 }));
 
 app.use(passport.initialize());
